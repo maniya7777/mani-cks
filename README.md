@@ -1,1 +1,1 @@
-# Killercoda CIS Benchmark Question
+# Killercoda Practice Sessions - K8S
