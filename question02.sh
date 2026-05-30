@@ -25,17 +25,20 @@ QST
 
 echo
 echo "============================================================="
-echo " Generating SSL Certificate and Key"
+echo " Creating namespace, cert and key"
 echo "============================================================="
 echo
+
+# Create namespace (safe even if already exists)
+kubectl create namespace clever-cactus --dry-run=client -o yaml | kubectl apply -f -
 
 # Create directory
 mkdir -p /root/mani-cks
 
-# Generate private key (NO PASSWORD)
+# Generate private key (non-interactive)
 openssl genrsa -out /root/mani-cks/web.k8s.local.key 2048
 
-# Generate self-signed certificate (FIXED LINE CONTINUATION + NON-INTERACTIVE)
+# Generate certificate (fixed + non-interactive)
 openssl req -new -x509 \
   -key /root/mani-cks/web.k8s.local.key \
   -out /root/mani-cks/web.k8s.local.crt \
@@ -44,9 +47,17 @@ openssl req -new -x509 \
   -subj "/CN=web.k8s.local"
 
 echo
-echo "Certificate and key created successfully:"
-echo "  /root/mani-cks/web.k8s.local.crt"
-echo "  /root/mani-cks/web.k8s.local.key"
+echo " Creating TLS Secret..."
+echo
+
+# Create TLS secret
+kubectl create secret tls clever-cactus \
+  --cert=/root/mani-cks/web.k8s.local.crt \
+  --key=/root/mani-cks/web.k8s.local.key \
+  -n clever-cactus
+
+echo
+echo " Secret created successfully"
 
 echo
 echo "============================================================="
