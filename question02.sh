@@ -47,9 +47,6 @@ openssl req -new -x509 \
   -subj "/CN=web.k8s.local"
 
 echo
-echo " Secret created successfully"
-
-echo
 echo "============================================================="
 echo " Ready for execution"
 echo "============================================================="
