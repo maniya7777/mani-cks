@@ -36,7 +36,7 @@ mkdir -p /cks/docker
 cat <<'EOF' > /cks/docker/Dockerfile
 FROM nginx:latest
 
-USER 65535
+USER root
 
 COPY . /usr/share/nginx/html
 
