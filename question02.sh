@@ -47,16 +47,6 @@ openssl req -new -x509 \
   -subj "/CN=web.k8s.local"
 
 echo
-echo " Creating TLS Secret..."
-echo
-
-# Create TLS secret
-kubectl create secret tls clever-cactus \
-  --cert=/root/mani-cks/web.k8s.local.crt \
-  --key=/root/mani-cks/web.k8s.local.key \
-  -n clever-cactus
-
-echo
 echo " Secret created successfully"
 
 echo
