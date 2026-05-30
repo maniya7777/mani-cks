@@ -7,21 +7,31 @@ echo "                 KILLERCODA - TASK (QUESTION 02)"
 echo "============================================================="
 echo
 
-cat <<'QST'
+# Create directory if it doesn't exist
+mkdir -p /home/candidate/ca-cert
 
-Context
-You must secure access to the web server using SSL files stored in a TLS Secret.
+# Generate private key
+openssl genrsa -out /home/candidate/ca-cert/web.k8s.local.key 2048
 
-Task
-Create a TLS Secret named clever-cactus in the clever-cactus namespace for the existing Deployment named clever-cactus.
+# Generate self-signed certificate
+openssl req -new -x509 -key /home/candidate/ca-cert/web.k8s.local.key \
+  -out /home/candidate/ca-cert/web.k8s.local.crt \
+  -days 365 \
+  -subj "/CN=web.k8s.local"
 
-Use the following SSL files:
-• Certificate: /home/candidate/ca-cert/web.k8s.local.crt
-• Private Key: /home/candidate/ca-cert/web.k8s.local.key
+echo
+echo "Certificate and key created:"
+echo "  /home/candidate/ca-cert/web.k8s.local.crt"
+echo "  /home/candidate/ca-cert/web.k8s.local.key"
 
-The Deployment is already configured to use the TLS Secret. Do not modify the existing Deployment.
+# Create TLS Secret
+kubectl create secret tls clever-cactus \
+  --cert=/home/candidate/ca-cert/web.k8s.local.crt \
+  --key=/home/candidate/ca-cert/web.k8s.local.key \
+  -n clever-cactus
 
-QST
+echo
+echo "TLS Secret 'clever-cactus' created in namespace 'clever-cactus'."
 
 echo
 echo "============================================================="
