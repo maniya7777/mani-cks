@@ -30,20 +30,18 @@ echo "============================================================="
 echo
 
 # Create directory
-
 mkdir -p /root/mani-cks
 
-# Generate private key
-
+# Generate private key (NO PASSWORD)
 openssl genrsa -out /root/mani-cks/web.k8s.local.key 2048
 
-# Generate self-signed certificate
-
-openssl req -new -x509 
--key /root/mani-cks/web.k8s.local.key 
--out /root/mani-cks/web.k8s.local.crt 
--days 365 
--subj "/CN=web.k8s.local"
+# Generate self-signed certificate (FIXED LINE CONTINUATION + NON-INTERACTIVE)
+openssl req -new -x509 \
+  -key /root/mani-cks/web.k8s.local.key \
+  -out /root/mani-cks/web.k8s.local.crt \
+  -days 365 \
+  -nodes \
+  -subj "/CN=web.k8s.local"
 
 echo
 echo "Certificate and key created successfully:"
