@@ -22,32 +22,29 @@ Do not add or delete configuration settings — only modify existing ones to res
 Note:
 If a non-privileged user is required to execute any project, use the nobody user with UID 65535.
 
-
 TASK
 
 echo
 echo "============================================================="
-echo " Dockerfile"
+echo " Creating files..."
 echo "============================================================="
 echo
 
-cat <<'DOCKERFILE'
+mkdir -p /cks/docker
+
+# Dockerfile fix: avoid root user
+cat <<'EOF' > /cks/docker/Dockerfile
 FROM nginx:latest
 
-USER root
+USER 65535
 
 COPY . /usr/share/nginx/html
 
 CMD ["nginx", "-g", "daemon off;"]
-DOCKERFILE
+EOF
 
-echo
-echo "============================================================="
-echo " deployment.yaml"
-echo "============================================================="
-echo
-
-cat <<'YAML'
+# deployment.yaml fix: improve image version (no structural changes)
+cat <<'EOF' > /cks/docker/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -64,9 +61,12 @@ spec:
     spec:
       containers:
       - name: secure-app
-        image: nginx
+        image: nginx:stable
+EOF
 
-YAML
+echo "Files created successfully:"
+echo "  /cks/docker/Dockerfile"
+echo "  /cks/docker/deployment.yaml"
 
 echo
 echo "============================================================="
