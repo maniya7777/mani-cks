@@ -1,50 +1,28 @@
 #!/bin/bash
 
-set -e
+echo "==============================================="
+echo " QUESTION"
+echo "==============================================="
 
-# Install Falco silently
-helm repo add falcosecurity https://falcosecurity.github.io/charts >/dev/null 2>&1
-helm repo update >/dev/null 2>&1
+echo
+echo "A misbehaving Pod poses a security threat to the system."
+echo
+echo "Task"
+echo "A Pod belonging to the ollama application is abnormal — it is directly accessing system memory by reading from the sensitive file /dev/mem."
+echo
+echo "First, identify the misbehaving Pod accessing /dev/mem."
+echo "Next, scale the Deployment of the misbehaving Pod to zero replicas."
+echo
+echo "==============================================="
 
-kubectl create namespace falco --dry-run=client -o yaml | kubectl apply -f - >/dev/null 2>&1
-
-helm upgrade --install falco falcosecurity/falco \
-  -n falco >/dev/null 2>&1
-
-kubectl rollout status daemonset/falco -n falco --timeout=180s >/dev/null 2>&1
-
-sleep 15
-
-# Create namespace silently
-kubectl create namespace security-lab --dry-run=client -o yaml | kubectl apply -f - >/dev/null 2>&1
-
-# Deploy normal application
-cat <<EOF | kubectl apply -f - >/dev/null 2>&1
-...
-EOF
-
-# Deploy misbehaving application
-cat <<EOF | kubectl apply -f - >/dev/null 2>&1
-...
-EOF
-
-sleep 20
-
-clear
-
-cat <<'EOF'
-=============================================================
-                         QUESTION
-=============================================================
-
-A misbehaving Pod poses a security threat to the system.
-
-Task
-A Pod belonging to the ollama application is abnormal — it is directly
-accessing system memory by reading from the sensitive file /dev/mem.
-
-First, identify the misbehaving Pod accessing /dev/mem.
-Next, scale the Deployment of the misbehaving Pod to zero replicas.
-
-=============================================================
-EOF
+echo
+echo "Environment setup completed."
+echo
+echo "Suggested approach:"
+echo "1. Gain root access."
+echo "2. Check the deployments."
+echo "3. Create a Falco rule to detect access to /dev/mem."
+echo "4. Monitor for 30 seconds and save the alerts to a file."
+echo "5. Review the Falco logs."
+echo "6. Identify the offending container using crictl or Docker commands."
+echo "7. Scale the corresponding Deployment to zero replicas."
