@@ -19,13 +19,11 @@ The Deployment manifest file can be found at:
 
 ~/nginx-unprivileged.yaml
 
-cat <<'EOF'
 Warning: would violate PodSecurity "restricted:latest":
 allowPrivilegeEscalation != false (container "nginx" must set securityContext.allowPrivilegeEscalation=false),
 unrestricted capabilities (container "nginx" must set securityContext.capabilities.drop=["ALL"]),
 runAsNonRoot != true (pod or container "nginx" must set securityContext.runAsNonRoot=true),
 seccompProfile (pod or container "nginx" must set securityContext.seccompProfile.type to "RuntimeDefault" or "Localhost")
-EOF
 
 QUESTION
 
@@ -38,8 +36,8 @@ echo
 kubectl create namespace confidential >/dev/null 2>&1
 
 kubectl label namespace confidential \
-pod-security.kubernetes.io/enforce=restricted \
---overwrite >/dev/null 2>&1
+  pod-security.kubernetes.io/enforce=restricted \
+  --overwrite >/dev/null 2>&1
 
 cat <<'YAML' > ~/nginx-unprivileged.yaml
 apiVersion: apps/v1
@@ -60,7 +58,6 @@ spec:
       containers:
       - name: nginx
         image: nginx
-
 YAML
 
 echo
