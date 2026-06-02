@@ -52,10 +52,7 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        securityContext:
-          privileged: true
-          allowPrivilegeEscalation: true
-          runAsUser: 0
+
 YAML
 
 echo
