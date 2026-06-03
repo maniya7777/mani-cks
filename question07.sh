@@ -43,10 +43,6 @@ kubectl create deployment backend --image=nginx -n data
 kubectl expose deployment frontend --port=80 -n prod
 kubectl expose deployment backend --port=80 -n data
 
-# Wait for deployments
-kubectl wait --for=condition=available deployment/frontend -n prod --timeout=120s
-kubectl wait --for=condition=available deployment/backend -n data --timeout=120s
-
 echo
 echo "========================================"
 echo "Environment Ready"
