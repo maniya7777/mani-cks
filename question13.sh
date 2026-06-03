@@ -42,22 +42,29 @@ sudo useradd developer >/dev/null 2>&1
 
 sudo usermod -aG docker developer >/dev/null 2>&1
 
-sudo mkdir -p /etc/docker
+mkdir -p /usr/lib/systemd/system
 
-cat <<'JSON' | sudo tee /etc/docker/daemon.json >/dev/null
-{
-  "hosts": [
-    "unix:///var/run/docker.sock",
-    "tcp://0.0.0.0:2375"
-  ],
-  "group": "docker"
-}
-JSON
+cat <<'EOF' > /usr/lib/systemd/system/docker.socket
+[Socket]
+ListenStream=/run/docker.sock
+SocketMode=0660
+SocketUser=root
+EOF
 
-mkdir -p ~/docker-security
+sudo tee /usr/lib/systemd/system/docker.service > /dev/null <<'EOF'
+[Service]
+Type=notify
 
-cat <<'INFO' > ~/docker-security/README.txt
-Docker Security Scenario
+# the default is not to use systemd for cgroups because the delegate issues still
+# exists and systemd currently does not support the cgroup feature set required
+# for containers run by docker
+
+ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375 --containerd=/run/containerd/containerd.sock
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutStartSec=0
+RestartSec=2
+Restart=always
+EOF
 
 Tasks:
 - Remove developer user from docker group
