@@ -31,17 +31,6 @@ rules:
     nonResourceURLs:
       - "/api*"
       - "/version"
-
-  # namespaces changes at RequestResponse level
-  - level: RequestResponse
-    resources:
-      - group: ""
-        resources: ["persistentvolumes"]
-
-  # Also, add a catch-all rule to log all other requests at the Metadata level.
-  - level: Metadata
-    omitStages:
-      - "RequestReceived"
 EOF
 
 echo
