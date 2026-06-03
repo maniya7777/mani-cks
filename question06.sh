@@ -1,4 +1,3 @@
-```bash id="x9m4qp"
 #!/bin/bash
 
 set -e
