@@ -66,14 +66,6 @@ RestartSec=2
 Restart=always
 EOF
 
-Tasks:
-- Remove developer user from docker group
-- Configure docker.sock ownership to root group
-- Remove TCP listener from Docker daemon
-- Restart Docker daemon
-- Ensure cluster remains healthy
-INFO
-
 echo
 echo "[OK] User created                  : developer"
 echo "[OK] Docker group assigned"
