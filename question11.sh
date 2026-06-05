@@ -56,17 +56,29 @@ spec:
         app: alpine
     spec:
       containers:
-      - name: alpine-318
-        image: alpine:3.18
-        command: ["sleep","3600"]
+      - name: alpine-a
+        image: registry.cn-qingdao.aliyuncs.com/containerhub/alpine:3.20.0
+        imagePullPolicy: IfNotPresent
+        args:
+        - /bin/sh
+        - -c
+        - while true; do sleep 360000; done
 
-      - name: alpine-319
-        image: alpine:3.19
-        command: ["sleep","3600"]
+      - name: alpine-b
+        image: registry.cn-qingdao.aliyuncs.com/containerhub/alpine:3.19.1
+        imagePullPolicy: IfNotPresent
+        args:
+        - /bin/sh
+        - -c
+        - while true; do sleep 360000; done
 
-      - name: alpine-320
-        image: alpine:3.20
-        command: ["sleep","3600"]
+      - name: alpine-c
+        image: registry.cn-qingdao.aliyuncs.com/containerhub/alpine:3.16.9
+        imagePullPolicy: IfNotPresent
+        args:
+        - /bin/sh
+        - -c
+        - while true; do sleep 360000; done
 YAML
 
 kubectl apply -f ~/alipine-deployment.yaml >/dev/null 2>&1
