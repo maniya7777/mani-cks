@@ -131,10 +131,6 @@ echo " Start the Solution!"
 echo "   ⚠ Do NOT build the Docker image after changes."
 echo ""
 
-echo "Files created successfully:"
-echo "  /cks/docker/Dockerfile"
-echo "  /cks/docker/deployment.yaml"
-
 echo
 echo "============================================================="
 echo " Ready for execution"
