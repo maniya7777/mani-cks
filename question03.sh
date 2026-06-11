@@ -30,25 +30,65 @@ echo " Creating files..."
 echo "============================================================="
 echo
 
-mkdir -p /cks/docker
+#!/bin/bash
+# ============================================================
+# CKS Practice | Q13: Dockerfile & Deployment Hardening
+# Creates insecure Dockerfile + deployment manifest
+# Run on: controlplane node
+# ============================================================
 
-# Dockerfile fix: avoid root user
-cat <<'EOF' > /cks/docker/Dockerfile
-FROM nginx:latest
+set -euo pipefail
+
+CKS_DIR="$HOME/cks/docker"
+
+echo ""
+echo "==========================================="
+echo " CKS Q13 — Setting up Hardening scenario..."
+echo "==========================================="
+echo ""
+
+# ── Step 1: Clean previous Q16 state ─────────────────────────
+echo "[1/3] Cleaning up any previous Q16 state..."
+
+rm -rf "$HOME/cks"
+echo "  Previous state cleaned."
+
+# ── Step 2: Create insecure Dockerfile ───────────────────────
+echo "[2/3] Creating insecure Dockerfile..."
+
+mkdir -p "$CKS_DIR"
+
+cat > "$CKS_DIR/Dockerfile" <<'EOF'
+FROM nginx:1.27
+
+LABEL maintainer="devops-team"
+
+RUN apt-get update && \
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY ./html /usr/share/nginx/html
+
+RUN chown -R root:root /usr/share/nginx/html
 
 USER root
 
-COPY . /usr/share/nginx/html
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
 EOF
 
-# deployment.yaml fix: improve image version (no structural changes)
-cat <<'EOF' > /cks/docker/deployment.yaml
+echo "  Dockerfile created (insecure: USER root)"
+
+# ── Step 3: Create insecure deployment.yaml ───────────────────
+echo "[3/3] Creating insecure deployment.yaml..."
+
+cat > "$CKS_DIR/deployment.yaml" <<'EOF'
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: secure-app
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -60,9 +100,36 @@ spec:
         app: secure-app
     spec:
       containers:
-      - name: secure-app
-        image: nginx:stable
+      - name: nginx
+        image: nginxinc/nginx-unprivileged
+        securityContext:
+          privileged: true
+          readOnlyRootFilesystem: false
+          runAsUser: 0
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: cache
+          mountPath: /var/cache/nginx
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
 EOF
+
+echo "  deployment.yaml created (insecure: privileged=true, runAsUser=0)"
+
+echo ""
+echo "✅ Q13 scenario is ready!"
+echo ""
+echo "   Files:"
+echo "   • $CKS_DIR/Dockerfile"
+echo "   • $CKS_DIR/deployment.yaml"
+echo ""
+echo " Start the Solution!"
+echo "   ⚠ Do NOT build the Docker image after changes."
+echo ""
 
 echo "Files created successfully:"
 echo "  /cks/docker/Dockerfile"
