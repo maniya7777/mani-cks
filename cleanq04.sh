@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q05: Detecting a Pod Accessing /dev/mem
+# CKS Practice | Q04: Detecting a Pod Accessing /dev/mem
 # reset_to_baseline.sh
 # Removes neuron namespace and fully uninstalls Falco
 # Run on: controlplane node
@@ -12,7 +12,7 @@ NAMESPACE="neuron"
 
 echo ""
 echo "==========================================="
-echo " CKS Q05 — Restoring cluster to baseline..."
+echo " CKS Q04 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
