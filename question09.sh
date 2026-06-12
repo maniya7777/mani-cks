@@ -37,6 +37,7 @@ echo "============================================================="
 echo " Creating Killercoda Environment"
 echo "============================================================="
 echo
+#!/bin/bash
 # ============================================================
 # CKS Practice | Q09: Hardening ServiceAccount Token Usage
 # Creates namespace, ServiceAccount and Deployment
