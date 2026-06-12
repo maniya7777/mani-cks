@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q16: Securing the Docker Daemon
+# CKS Practice | Q13: Securing the Docker Daemon
 # Removes Docker completely — restores node01 to baseline
 # ============================================================
 
@@ -8,7 +8,7 @@ set -euo pipefail
 
 echo ""
 echo "==========================================="
-echo " CKS Q16 — Restoring node01 to baseline..."
+echo " CKS Q13 — Restoring node01 to baseline..."
 echo "==========================================="
 echo ""
 
