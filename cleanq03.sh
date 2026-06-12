@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q16: Dockerfile & Deployment Hardening
+# CKS Practice | Q03: Dockerfile & Deployment Hardening
 # Removes ~/cks directory
 # Run on: controlplane node
 # ============================================================
@@ -9,7 +9,7 @@ set -euo pipefail
 
 echo ""
 echo "==========================================="
-echo " CKS Q13 — Restoring to baseline..."
+echo " CKS Q03 — Restoring to baseline..."
 echo "==========================================="
 echo ""
 
