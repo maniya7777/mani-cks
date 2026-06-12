@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q10: Ingress with HTTPS
+# CKS Practice | Q08: Ingress with HTTPS
 # Installs ingress-nginx, enables Cilium ingress controller,
 # deploys web app, creates TLS secret
 # Run on: controlplane node
@@ -14,12 +14,12 @@ TLS_DIR="$HOME/tls"
 
 echo ""
 echo "==========================================="
-echo " CKS Q10 — Setting up Ingress HTTPS scenario..."
+echo " CKS Q08 — Setting up Ingress HTTPS scenario..."
 echo "==========================================="
 echo ""
 
 # ── Step 1: Clean only user-modified state ───────────────────
-echo "[1/7] Cleaning up previous Q10 state..."
+echo "[1/7] Cleaning up previous Q08 state..."
 kubectl delete ingress web-ingress -n "$NAMESPACE" --ignore-not-found
 kubectl delete secret web-ingress-tls -n "$NAMESPACE" --ignore-not-found
 rm -f "$HOME"/*.yaml "$HOME"/*.yml
@@ -189,7 +189,7 @@ echo ""
 kubectl get ingressclass
 
 echo ""
-echo "✅ Q10 scenario is ready!"
+echo "✅ Q08 scenario is ready!"
 echo ""
 echo "  NGINX  → curl -Lk https://web.k8s.local:32000"
 echo "  Cilium → curl -Lk https://web.k8s.local:32001"
