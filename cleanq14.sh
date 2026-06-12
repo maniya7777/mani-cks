@@ -1,8 +1,8 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q03: Istio mTLS Enforcement
+# CKS Practice | Q14: Istio mTLS Enforcement
 # reset_to_baseline.sh
-# Removes all Q03 changes including Istio uninstall
+# Removes all Q14 changes including Istio uninstall
 # Run on: controlplane node
 # ============================================================
 
@@ -14,7 +14,7 @@ ISTIO_INSTALL_DIR="/tmp/cks-q03-istio"
 
 echo ""
 echo "==========================================="
-echo " CKS Q03 — Restoring cluster to baseline..."
+echo " CKS Q14 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
