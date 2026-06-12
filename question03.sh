@@ -32,7 +32,7 @@ echo
 
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q13: Dockerfile & Deployment Hardening
+# CKS Practice | Q03: Dockerfile & Deployment Hardening
 # Creates insecure Dockerfile + deployment manifest
 # Run on: controlplane node
 # ============================================================
@@ -43,7 +43,7 @@ CKS_DIR="$HOME/cks/docker"
 
 echo ""
 echo "==========================================="
-echo " CKS Q13 — Setting up Hardening scenario..."
+echo " CKS Q03 — Setting up Hardening scenario..."
 echo "==========================================="
 echo ""
 
@@ -121,7 +121,7 @@ EOF
 echo "  deployment.yaml created (insecure: privileged=true, runAsUser=0)"
 
 echo ""
-echo "✅ Q13 scenario is ready!"
+echo "✅ Q03 scenario is ready!"
 echo ""
 echo "   Files:"
 echo "   • $CKS_DIR/Dockerfile"
