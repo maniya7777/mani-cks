@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q12: Container Security Context Hardening
+# CKS Practice | Q05: Container Security Context Hardening
 # Removes sec-ns namespace and manifest files
 # Run on: controlplane node
 # ============================================================
@@ -12,7 +12,7 @@ MANIFEST_FILE="sec-ns_deployment.yaml"
 
 echo ""
 echo "==========================================="
-echo " CKS Q12 — Restoring cluster to baseline..."
+echo " CKS Q05 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
