@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q06: BOM Tool (SBOM / SPDX)
+# CKS Practice | Q11: BOM Tool (SBOM / SPDX)
 # reset_to_baseline.sh
 # Removes sbom namespace, manifest files and bom binary
 # Run on: controlplane node
@@ -12,7 +12,7 @@ NAMESPACE="sbom"
 
 echo ""
 echo "==========================================="
-echo " CKS Q06 — Restoring cluster to baseline..."
+echo " CKS Q11 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
