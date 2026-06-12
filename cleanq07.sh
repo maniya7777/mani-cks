@@ -1,7 +1,7 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q09: Network Policy
-# Removes production + database namespaces and all Q09 resources
+# CKS Practice | Q07: Network Policy
+# Removes production + database namespaces and all Q07 resources
 # Run on: controlplane node
 # ============================================================
 
@@ -9,7 +9,7 @@ set -euo pipefail
 
 echo ""
 echo "==========================================="
-echo " CKS Q09 — Restoring cluster to baseline..."
+echo " CKS Q07 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
