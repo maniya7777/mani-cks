@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q14: Creating a TLS Secret
+# CKS Practice | Q02: Creating a TLS Secret
 # Removes namespace and TLS files
 # Run on: controlplane node
 # ============================================================
@@ -12,7 +12,7 @@ TLS_DIR="$HOME/tls"
 
 echo ""
 echo "==========================================="
-echo " CKS Q14 — Restoring cluster to baseline..."
+echo " CKS Q02 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
