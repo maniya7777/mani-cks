@@ -9,18 +9,20 @@ echo
 
 cat <<'QUESTION'
 
-Context
-You must update an existing Pod to ensure the immutability of its containers.
+A Kubernetes Deployment is running with insecure container settings.
+
+Your objective is to harden the containers by enforcing immutability and reducing privilege-related risks.
+
+An existing Deployment named secdep is deployed in the sec-ns namespace.
+
+You have been provided with the manifest file: ~/sec-ns_deployment.yaml
 
 Task
-Modify the Deployment named secdep in the sec-ns namespace so that its containers:
+Update the Deployment so that all containers:
 
-- Run with user ID 30000
-- Use a read-only root filesystem
-- Prohibit privilege escalation
-
-The Deployment manifest file can be found at:
-~/sec-ns_deployment.yaml
+Run as a non-root user with UID 32000
+Use a read-only root filesystem
+Disallow privilege escalation
 
 QUESTION
 
@@ -30,9 +32,49 @@ echo " Creating Environment Setup"
 echo "============================================================="
 echo
 
-mkdir -p ~/cks/question05
+#!/bin/bash
+# ============================================================
+# CKS Practice | Q05: Container Security Context Hardening
+# Creates sec-ns namespace + insecure Deployment + manifest
+# Run on: controlplane node
+# ============================================================
 
-cat <<'YAML' > ~/sec-ns_deployment.yaml
+set -euo pipefail
+
+NAMESPACE="sec-ns"
+MANIFEST_FILE="$HOME/sec-ns_deployment.yaml"
+
+echo ""
+echo "==========================================="
+echo " CKS Q05 — Setting up Security Context scenario..."
+echo "==========================================="
+echo ""
+
+# ── Step 1: Reset only user-modified state ───────────────────
+echo "[1/3] Cleaning up previous Q12 state..."
+
+# Deployment — user adds securityContext fields to this
+kubectl delete deployment secdep -n "$NAMESPACE" --ignore-not-found
+
+# Manifest — user edits this file directly
+rm -f "$MANIFEST_FILE"
+
+echo "  Previous state cleaned."
+
+# ── Step 2: Ensure namespace exists ──────────────────────────
+echo "[2/3] Checking namespace..."
+
+if kubectl get namespace "$NAMESPACE" &>/dev/null; then
+    echo "  Namespace '$NAMESPACE' already exists — skipping."
+else
+    kubectl create namespace "$NAMESPACE"
+    echo "  Namespace '$NAMESPACE' created."
+fi
+
+# ── Step 3: Create manifest + apply Deployment ───────────────
+echo "[3/3] Creating manifest and deploying..."
+
+cat > "$MANIFEST_FILE" <<'EOF'
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -50,13 +92,32 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginxinc/nginx-unprivileged
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: tmp
+          mountPath: /tmp
+        - name: cache
+          mountPath: /var/cache/nginx
+      volumes:
+      - name: tmp
+        emptyDir: {}
+      - name: cache
+        emptyDir: {}
+EOF
 
-YAML
+kubectl apply -f "$MANIFEST_FILE"
 
-echo "[OK] Deployment manifest created:"
-echo "~/sec-ns_deployment.yaml"
+echo "  Waiting for Deployment to be Ready..."
+kubectl wait --for=condition=available deployment/secdep \
+    -n "$NAMESPACE" --timeout=120s
 
+echo ""
+echo "✅ Q05 scenario is ready!"
+echo ""
+echo "Start the Solution!"
+echo ""
 echo
 echo "============================================================="
 echo " Ready for execution"
