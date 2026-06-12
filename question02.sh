@@ -29,7 +29,7 @@ echo
 
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q14: Creating a TLS Secret
+# CKS Practice | Q02: Creating a TLS Secret
 # Creates TLS files, namespace and Deployment
 # Run on: controlplane node
 # ============================================================
@@ -41,7 +41,7 @@ TLS_DIR="$HOME/tls"
 
 echo ""
 echo "==========================================="
-echo " CKS Q14 — Setting up TLS Secret scenario..."
+echo " CKS Q02 — Setting up TLS Secret scenario..."
 echo "==========================================="
 echo ""
 
@@ -124,7 +124,7 @@ fi
 echo "  (Pod stays Pending — secret does not exist yet) ✔"
 
 echo ""
-echo "✅ Q14 scenario is ready!"
+echo "✅ Q02 scenario is ready!"
 echo ""
 echo "Start the Solution!"
 echo ""
