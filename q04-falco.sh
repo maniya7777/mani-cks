@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q05: Detecting a Pod Accessing /dev/mem
+# CKS Practice | Q04: Detecting a Pod Accessing /dev/mem
 # setup_problem_scenario.sh
 # Deploys neuron workloads and installs Falco
 # Run on: controlplane node
@@ -13,7 +13,7 @@ FALCO_RULES_LOCAL="/etc/falco/falco_rules.local.yaml"
 
 echo ""
 echo "==========================================="
-echo " CKS Q05 — Setting up /dev/mem scenario..."
+echo " CKS Q04 — Setting up /dev/mem scenario..."
 echo "==========================================="
 echo ""
 
@@ -125,7 +125,7 @@ echo "[4/4] Verifying scenario state..."
 kubectl get pods -n "$NAMESPACE"
 
 echo ""
-echo "✅ Q05 scenario is ready!"
+echo "✅ Q04 scenario is ready!"
 echo ""
 echo "Start the solution!"
 echo ""
