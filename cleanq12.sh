@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q04: Restricted Pod Security Standard (PSA)
+# CKS Practice | Q12: Restricted Pod Security Standard (PSA)
 # reset_to_baseline.sh
 # Removes restricted namespace and all Q04 resources
 # Run on: controlplane node
@@ -12,7 +12,7 @@ NAMESPACE="restricted"
 
 echo ""
 echo "==========================================="
-echo " CKS Q04 — Restoring cluster to baseline..."
+echo " CKS Q12 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
