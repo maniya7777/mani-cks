@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q11: Hardening ServiceAccount Token Usage
+# CKS Practice | Q09: Hardening ServiceAccount Token Usage
 # Removes namespace and manifest files
 # Run on: controlplane node
 # ============================================================
@@ -11,7 +11,7 @@ NAMESPACE="serviceaccount"
 
 echo ""
 echo "==========================================="
-echo " CKS Q11 — Restoring cluster to baseline..."
+echo " CKS Q09 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
