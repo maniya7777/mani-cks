@@ -37,26 +37,51 @@ NAMESPACE="serviceaccount"
 MANIFEST_DIR="$HOME/monitor"
 MANIFEST_FILE="$MANIFEST_DIR/deployment.yaml"
 
-echo "[1/4] Cleaning previous state..."
+echo ""
+echo "==========================================="
+echo " CKS Q09 — Setting up ServiceAccount scenario..."
+echo "==========================================="
+echo ""
 
+# ── Step 1: Reset only user-modified state ───────────────────
+echo "[1/4] Cleaning up previous Q11 state..."
+
+# Deployment — user modifies this (automountServiceAccountToken)
 kubectl delete deployment monitor -n "$NAMESPACE" --ignore-not-found
+
+# ServiceAccount — user modifies this (automountServiceAccountToken)
 kubectl delete serviceaccount monitor-sa -n "$NAMESPACE" --ignore-not-found
+
+# Manifest dir — always restore to original non-hardened version
 rm -rf "$MANIFEST_DIR"
 
-echo "[2/4] Ensuring namespace exists..."
-kubectl get namespace "$NAMESPACE" >/dev/null 2>&1 || kubectl create namespace "$NAMESPACE"
+echo "  Previous state cleaned."
 
-echo "[3/4] Creating ServiceAccount..."
+# ── Step 2: Ensure namespace exists ──────────────────────────
+echo "[2/4] Checking namespace..."
+
+if kubectl get namespace "$NAMESPACE" &>/dev/null; then
+    echo "  Namespace '$NAMESPACE' already exists — skipping."
+else
+    kubectl create namespace "$NAMESPACE"
+    echo "  Namespace '$NAMESPACE' created."
+fi
+
+# ── Step 3: Create ServiceAccount ────────────────────────────
+echo "[3/4] Creating ServiceAccount monitor-sa..."
+
 kubectl apply -f - <<EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: monitor-sa
   namespace: $NAMESPACE
-automountServiceAccountToken: false
 EOF
 
-echo "[4/4] Creating Deployment manifest..."
+echo "  ServiceAccount monitor-sa created (automount: default true)."
+
+# ── Step 4: Create manifest + apply Deployment ───────────────
+echo "[4/4] Creating deployment manifest and applying..."
 
 mkdir -p "$MANIFEST_DIR"
 
@@ -77,26 +102,21 @@ spec:
         app: monitor
     spec:
       serviceAccountName: monitor-sa
-      automountServiceAccountToken: false
       containers:
       - name: monitor
         image: nginx
-        volumeMounts:
-        - name: token
-          mountPath: /var/run/secrets/kubernetes.io/serviceaccount/token
-          readOnly: true
-      volumes:
-      - name: token
-        projected:
-          sources:
-          - serviceAccountToken:
-              path: token
-              expirationSeconds: 3600
+        ports:
+        - containerPort: 80
 EOF
 
 kubectl apply -f "$MANIFEST_FILE"
 
-echo "Waiting for deployment..."
-kubectl rollout status deployment/monitor -n "$NAMESPACE"
+echo "  Waiting for deployment to be Ready..."
+kubectl wait --for=condition=available deployment/monitor \
+    -n "$NAMESPACE" --timeout=120s
 
-echo "✅ Q09 setup completed!"
+echo ""
+echo "✅ Q09 scenario is ready!"
+echo ""
+echo "Start the Solution!"
+echo ""
