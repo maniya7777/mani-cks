@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q15: Kubernetes API Log Auditing
+# CKS Practice | Q06: Kubernetes API Log Auditing
 # Removes audit config, volumes and directories
 # Run on: controlplane node
 # ============================================================
@@ -12,7 +12,7 @@ LOG_DIR="/var/log/kubernetes"
 
 echo ""
 echo "==========================================="
-echo " CKS Q15 — Restoring cluster to baseline..."
+echo " CKS Q06 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
