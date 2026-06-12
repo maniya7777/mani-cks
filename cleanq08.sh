@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q10: Ingress with HTTPS
+# CKS Practice | Q08: Ingress with HTTPS
 # Full reset — removes all Q10 resources
 # Run on: controlplane node
 # ============================================================
@@ -13,7 +13,7 @@ TLS_DIR="$HOME/tls"
 
 echo ""
 echo "==========================================="
-echo " CKS Q10 — Restoring cluster to baseline..."
+echo " CKS Q08 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
