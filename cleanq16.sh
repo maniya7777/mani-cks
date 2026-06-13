@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q08: Securing API Server Auth & Authz
+# CKS Practice | Q16: Securing API Server Auth & Authz
 # reset_to_baseline.sh
 # Run on: controlplane node
 # ============================================================
@@ -10,7 +10,7 @@ set -euo pipefail
 
 echo ""
 echo "==========================================="
-echo " CKS Q08 — Restoring cluster to baseline..."
+echo " CKS Q16 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
