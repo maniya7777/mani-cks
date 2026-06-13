@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# CKS Practice | Q02: ImagePolicyWebhook
+# CKS Practice | Q15: ImagePolicyWebhook
 # reset_to_baseline.sh
 # ============================================================
 
@@ -12,7 +12,7 @@ WORK_DIR="/tmp/cks-q02-setup"
 
 echo ""
 echo "==========================================="
-echo " CKS Q02 — Restoring cluster to baseline..."
+echo " CKS Q15 — Restoring cluster to baseline..."
 echo "==========================================="
 echo ""
 
@@ -27,7 +27,7 @@ kubectl delete deploy -n default --all --ignore-not-found
 echo "  K8s resources removed."
 
 # ── Step 2: Patch kube-apiserver manifest ─────────────────────
-echo "[2/4] Removing Q02 changes from kube-apiserver manifest..."
+echo "[2/4] Removing Q15 changes from kube-apiserver manifest..."
 
 sudo python3 - <<'PYEOF'
 import yaml
