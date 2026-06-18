@@ -51,6 +51,8 @@ else
     echo "  ✔ Falco binary not found — clean."
 fi
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
