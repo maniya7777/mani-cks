@@ -1,31 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 05"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A Kubernetes Deployment is running with insecure container settings.
-
-Your objective is to harden the containers by enforcing immutability and reducing privilege-related risks.
-
-An existing Deployment named secdep is deployed in the sec-ns namespace.
-
-You have been provided with the manifest file: ~/sec-ns_deployment.yaml
-
-Task
-Update the Deployment so that all containers:
-
-Run as a non-root user with UID 32000
-Use a read-only root filesystem
-Disallow privilege escalation
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Environment Setup"
@@ -119,6 +93,34 @@ echo ""
 echo "Start the Solution!"
 echo ""
 echo
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 05"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A Kubernetes Deployment is running with insecure container settings.
+
+Your objective is to harden the containers by enforcing immutability and reducing privilege-related risks.
+
+An existing Deployment named secdep is deployed in the sec-ns namespace.
+
+You have been provided with the manifest file: ~/sec-ns_deployment.yaml
+
+Task
+Update the Deployment so that all containers:
+
+Run as a non-root user with UID 32000
+Use a read-only root filesystem
+Disallow privilege escalation
+
+QUESTION
+
 echo "============================================================="
 echo " Ready for execution"
 echo "============================================================="
