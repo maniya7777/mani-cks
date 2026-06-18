@@ -120,6 +120,8 @@ EOF
 
 echo "  deployment.yaml created (insecure: privileged=true, runAsUser=0)"
 
+clear
+
 echo ""
 echo "✅ Q03 scenario is ready!"
 echo ""
