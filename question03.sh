@@ -1,29 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 03"
-echo "============================================================="
-echo
-
-cat <<'TASK'
-
-Task
-Analyze and edit the provided Dockerfile /cks/docker/Dockerfile to fix one instruction with prominent security/best practice issues.
-
-Do not build the Dockerfile — this may cause storage exhaustion and a score of zero.
-
-Analyze and edit the provided manifest file /cks/docker/deployment.yaml to fix one field with prominent security/best practice issues.
-
-Note:
-Do not add or delete configuration settings — only modify existing ones to resolve the security/best practice issues in both files.
-
-Note:
-If a non-privileged user is required to execute any project, use the nobody user with UID 65535.
-
-TASK
-
 echo
 echo "============================================================="
 echo " Creating files..."
@@ -120,7 +96,30 @@ EOF
 
 echo "  deployment.yaml created (insecure: privileged=true, runAsUser=0)"
 
+
 clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 03"
+echo "============================================================="
+echo
+
+cat <<'TASK'
+
+Task
+Analyze and edit the provided Dockerfile /cks/docker/Dockerfile to fix one instruction with prominent security/best practice issues.
+
+Do not build the Dockerfile — this may cause storage exhaustion and a score of zero.
+
+Analyze and edit the provided manifest file /cks/docker/deployment.yaml to fix one field with prominent security/best practice issues.
+
+Note:
+Do not add or delete configuration settings — only modify existing ones to resolve the security/best practice issues in both files.
+
+Note:
+If a non-privileged user is required to execute any project, use the nobody user with UID 65535.
+
+TASK
 
 echo ""
 echo "✅ Q03 scenario is ready!"
