@@ -1,26 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "                 KILLERCODA - TASK (QUESTION 02)"
-echo "============================================================="
-echo
-
-cat <<'QST'
-
-Create a TLS Secret named bright-banyan in the bright-banyan namespace.
-
-The Secret must be created using the following SSL files:
-
-Certificate file: /root/tls/banyan.crt
-
-Private key file: /root/tls/banyan.key
-
-An existing Deployment named bright-banyan is already configured to reference this Secret.
-
-QST
-
 echo
 echo "============================================================="
 echo " Creating namespace, cert and key"
@@ -128,6 +107,28 @@ echo "✅ Q02 scenario is ready!"
 echo ""
 echo "Start the Solution!"
 echo ""
+
+
+clear
+
+echo "============================================================="
+echo "                 KILLERCODA - TASK (QUESTION 02)"
+echo "============================================================="
+echo
+
+cat <<'QST'
+
+Create a TLS Secret named bright-banyan in the bright-banyan namespace.
+
+The Secret must be created using the following SSL files:
+
+Certificate file: /root/tls/banyan.crt
+
+Private key file: /root/tls/banyan.key
+
+An existing Deployment named bright-banyan is already configured to reference this Secret.
+
+QST
 
 echo
 echo "============================================================="
