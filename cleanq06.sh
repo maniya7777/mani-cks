@@ -94,6 +94,8 @@ for i in $(seq 1 30); do
     sleep 3
 done
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
