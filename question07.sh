@@ -1,21 +1,5 @@
 #!/bin/bash
 
-echo "========================================"
-echo "CKS NetworkPolicy Question"
-echo "========================================"
-echo
-echo "Context"
-echo "In the production namespace, create a NetworkPolicy named deny-policy that blocks all incoming traffic to Pods by default."
-echo "The production namespace has the label:"
-echo "env: production"
-echo "In the database namespace, create a NetworkPolicy named allow-from-production that permits ingress traffic only from Pods running in the production namespace."
-echo "Use the namespace label to allow traffic."
-echo "The database namespace has the label:"
-echo "env: database"
-echo
-echo "========================================"
-echo "Setting up Killercoda Environment..."
-echo "========================================"
 # ============================================================
 # CKS Practice | Q07: Network Policy
 # Creates production + database namespaces with labels
@@ -78,6 +62,21 @@ else
 fi
 kubectl label namespace database env=database --overwrite
 echo "  database → label env=database ✔"
+
+clear
+
+echo "========================================"
+echo "CKS NetworkPolicy Question"
+echo "========================================"
+echo
+echo "Context"
+echo "In the production namespace, create a NetworkPolicy named deny-policy that blocks all incoming traffic to Pods by default."
+echo "The production namespace has the label:"
+echo "env: production"
+echo "In the database namespace, create a NetworkPolicy named allow-from-production that permits ingress traffic only from Pods running in the production namespace."
+echo "Use the namespace label to allow traffic."
+echo "The database namespace has the label:"
+echo "env: database"
 
 echo ""
 echo "✅ Q07 scenario is ready!"
