@@ -20,6 +20,8 @@ kubectl delete namespace production --ignore-not-found
 kubectl delete namespace database --ignore-not-found
 echo "  Namespaces and all resources removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo "   Safe to move to next problem. 🚀"
