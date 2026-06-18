@@ -39,6 +39,8 @@ echo "  Done."
 # NOTE: Cilium ingress is not disabled here to avoid disrupting the CNI.
 # The setup script handles idempotent re-enablement on next run.
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo "   Safe to move to next problem. 🚀"
