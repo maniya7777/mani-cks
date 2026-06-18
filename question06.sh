@@ -186,6 +186,9 @@ echo ""
 echo "   Start the Solution!:"
 echo ""
 echo
+
+clear
+
 echo "==============================================="
 echo " QUESTION"
 echo "==============================================="
