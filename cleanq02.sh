@@ -28,6 +28,8 @@ echo "[2/2] Removing TLS files..."
 rm -rf "$TLS_DIR"
 echo "  $TLS_DIR removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
