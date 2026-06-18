@@ -78,6 +78,8 @@ for i in $(seq 1 30); do
     sleep 3
 done
 
+clear
+
 echo ""
 echo "✅ Problem scenario is ready!"
 echo "   Now go fix them! 💪"
