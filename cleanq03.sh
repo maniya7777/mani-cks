@@ -18,6 +18,8 @@ echo "[1/1] Removing ~/cks directory..."
 rm -rf "$HOME/cks"
 echo "  $HOME/cks removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
