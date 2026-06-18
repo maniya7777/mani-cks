@@ -85,6 +85,8 @@ echo "✅ Problem scenario is ready!"
 echo "   Now go fix them! 💪"
 echo ""
 
+clear
+
 echo "============================================================="
 echo "            KILLERCODA - CIS BENCHMARK QUESTION"
 echo "============================================================="
