@@ -29,6 +29,8 @@ echo "[2/2] Removing manifest files..."
 rm -f "$HOME/$MANIFEST_FILE"
 echo "  Manifest files removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
