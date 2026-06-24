@@ -1,28 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 12"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A Kubernetes cluster is configured to enforce the Restricted Pod Security Standard across all user namespaces.
-
-In the restricted namespace, an existing Deployment is not meeting the required Restricted security rules. 
-Because of this, its Pods are being rejected and cannot be scheduled or started.
-
-The Deployment manifest file is available at:
-
-~/nginx-deployment.yaml
-🎯 Task
-Update the Deployment in the restricted namespace so that it fully complies with the Restricted Pod Security Standard.
-After applying the required security settings, verify that the Pods are created and running successfully.
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -148,6 +125,30 @@ if [ "$POD_COUNT" -eq 0 ]; then
 else
     echo "  ⚠ WARNING: $POD_COUNT pod(s) running — PSA may not be enforcing."
 fi
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 12"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A Kubernetes cluster is configured to enforce the Restricted Pod Security Standard across all user namespaces.
+
+In the restricted namespace, an existing Deployment is not meeting the required Restricted security rules. 
+Because of this, its Pods are being rejected and cannot be scheduled or started.
+
+The Deployment manifest file is available at:
+
+~/nginx-deployment.yaml
+🎯 Task
+Update the Deployment in the restricted namespace so that it fully complies with the Restricted Pod Security Standard.
+After applying the required security settings, verify that the Pods are created and running successfully.
+
+QUESTION
 
 echo ""
 echo "  Recent events:"
