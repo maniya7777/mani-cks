@@ -1,28 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 14"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A microservices application is running in the Kubernetes cluster. Currently, service-to-service communication within the application uses unencrypted Layer 4 (TCP) traffic.
-
-Istio has already been installed in the cluster to help secure internal communication using mutual TLS (mTLS).
-
-The workloads are deployed inside the istio-example namespace, but secure communication is not yet fully enforced.
-
-🎯 Task
-To secure all Layer 4 traffic, complete the following:
-
-Ensure every Pod running in the istio-example namespace has the Istio sidecar proxy (istio-proxy) injected.
-Configure mutual TLS authentication in STRICT mode for all workloads inside the istio-example namespace.
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -134,6 +111,30 @@ if echo "$CONTAINERS" | grep -q "istio-proxy"; then
 else
     echo "  ✔ No istio-proxy sidecar present (as expected)."
 fi
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 14"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A microservices application is running in the Kubernetes cluster. Currently, service-to-service communication within the application uses unencrypted Layer 4 (TCP) traffic.
+
+Istio has already been installed in the cluster to help secure internal communication using mutual TLS (mTLS).
+
+The workloads are deployed inside the istio-example namespace, but secure communication is not yet fully enforced.
+
+🎯 Task
+To secure all Layer 4 traffic, complete the following:
+
+Ensure every Pod running in the istio-example namespace has the Istio sidecar proxy (istio-proxy) injected.
+Configure mutual TLS authentication in STRICT mode for all workloads inside the istio-example namespace.
+
+QUESTION
 
 echo ""
 echo "✅ Q14 scenario is ready!"
