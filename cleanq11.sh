@@ -39,6 +39,8 @@ else
     echo "  bom not found — skipping."
 fi
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
