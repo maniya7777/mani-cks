@@ -1,39 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 13"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A Kubernetes worker node requires immediate hardening due to insecure Docker daemon configuration.
-
-The node currently:
-
-Allows unnecessary user-level access to the Docker socket
-May be exposing the Docker API over the network
-Both issues can lead to serious security risks.
-
-You must log in to node cks1011 and apply the required security fixes without impacting cluster stability.
-
-🎯 Task
-On node, complete the following:
-
-Remove user developer from the docker group
-
-Do not remove the user from any other groups
-Update and restart Docker so that:
-
-/var/run/docker.sock is owned by the root group
-Ensure Docker is not listening on any TCP port
-
-It should only use the Unix socket
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -177,6 +143,41 @@ fi
 
 echo "  Verifying docker.sock group..."
 ls -lh /var/run/docker.sock
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 13"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A Kubernetes worker node requires immediate hardening due to insecure Docker daemon configuration.
+
+The node currently:
+
+Allows unnecessary user-level access to the Docker socket
+May be exposing the Docker API over the network
+Both issues can lead to serious security risks.
+
+You must log in to node cks1011 and apply the required security fixes without impacting cluster stability.
+
+🎯 Task
+On node, complete the following:
+
+Remove user developer from the docker group
+
+Do not remove the user from any other groups
+Update and restart Docker so that:
+
+/var/run/docker.sock is owned by the root group
+Ensure Docker is not listening on any TCP port
+
+It should only use the Unix socket
+
+QUESTION
 
 echo ""
 echo "✅ Q13 scenario is ready!"
