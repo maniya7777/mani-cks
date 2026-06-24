@@ -1,38 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 16"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A Kubernetes cluster built using kubeadm was temporarily left in an insecure state for testing purposes.
-
-The API server is currently configured to allow requests without proper authentication and authorization. This presents a serious security risk.
-
-Your task is to restore secure access controls by hardening the API server configuration and removing any anonymous permissions.
-
-🎯 Task
-Update the Kubernetes API server configuration to enforce the following security settings:
-
-Disable anonymous authentication
-
-Configure authorization to use only:
-
-Node
-RBAC
-Enable the admission controller:
-
-NodeRestriction
-After securing the API server, remove unnecessary anonymous access by deleting the following ClusterRoleBinding:
-
-system:anonymous
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -158,6 +125,41 @@ kubectl config use-context anonymous-context \
     --kubeconfig="$HOME/.kube/config"
 
 echo "  ~/.kube/config replaced with anonymous kubeconfig."
+
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 16"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A Kubernetes cluster built using kubeadm was temporarily left in an insecure state for testing purposes.
+
+The API server is currently configured to allow requests without proper authentication and authorization. This presents a serious security risk.
+
+Your task is to restore secure access controls by hardening the API server configuration and removing any anonymous permissions.
+
+🎯 Task
+Update the Kubernetes API server configuration to enforce the following security settings:
+
+Disable anonymous authentication
+
+Configure authorization to use only:
+
+Node
+RBAC
+Enable the admission controller:
+
+NodeRestriction
+After securing the API server, remove unnecessary anonymous access by deleting the following ClusterRoleBinding:
+
+system:anonymous
+
+QUESTION
 
 echo ""
 echo "✅ Q16 scenario is ready!"
