@@ -1,35 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 15"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-A Kubernetes cluster built using kubeadm must enforce strict container image security controls.
-
-An image scanning service is already running in the cluster and exposes an HTTPS webhook endpoint to validate images before they are allowed to run.
-
-An incomplete admission controller configuration is provided at:
-
-/etc/kubernetes/webhook/
-The image scanning webhook is reachable at:
-
-https://image-policy-webhook.default
-🎯 Task
-Complete the integration of container image validation by implementing an ImagePolicyWebhook Validating Admission Controller.
-
-Update the Kubernetes API server configuration so the required admission plugin is enabled and uses the provided AdmissionConfiguration.
-Configure ImagePolicyWebhook to operate in fail-closed mode (reject images if the webhook backend is unavailable).
-Verify the setup by deploying the test workload:
-~/nginx-deployment.yaml
-This workload uses an image that should be denied by the policy. You may delete and recreate it as needed.
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -369,6 +339,37 @@ for i in $(seq 1 30); do
     echo "  Waiting... ($i/30)"
     sleep 3
 done
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 15"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+A Kubernetes cluster built using kubeadm must enforce strict container image security controls.
+
+An image scanning service is already running in the cluster and exposes an HTTPS webhook endpoint to validate images before they are allowed to run.
+
+An incomplete admission controller configuration is provided at:
+
+/etc/kubernetes/webhook/
+The image scanning webhook is reachable at:
+
+https://image-policy-webhook.default
+🎯 Task
+Complete the integration of container image validation by implementing an ImagePolicyWebhook Validating Admission Controller.
+
+Update the Kubernetes API server configuration so the required admission plugin is enabled and uses the provided AdmissionConfiguration.
+Configure ImagePolicyWebhook to operate in fail-closed mode (reject images if the webhook backend is unavailable).
+Verify the setup by deploying the test workload:
+~/nginx-deployment.yaml
+This workload uses an image that should be denied by the policy. You may delete and recreate it as needed.
+
+QUESTION
 
 echo ""
 echo "✅ Q15 scenario is ready!"
