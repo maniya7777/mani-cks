@@ -28,6 +28,8 @@ echo "[2/2] Removing $HOME/monitor directory..."
 sudo rm -rf $HOME/monitor
 echo "  $HOME/monitor directory removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
