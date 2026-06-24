@@ -44,6 +44,8 @@ else
     echo "  developer user not found — skipping."
 fi
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
