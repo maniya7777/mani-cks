@@ -1,34 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 11"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-There is a Deployment named sbom running in the sbom namespace.
-
-This Deployment contains three containers, and each container uses a different image version.
-
-Your task is to inspect the container images and identify which container includes the package:
-
-libcrypto3 version 3.1.4-r5
-After identifying the correct image version:
-
-Use the pre-installed bom utility to generate an SPDX (Software Bill of Materials) report and save it as:
-
-~/report.spdx
-Update the sbom Deployment so that the container using the identified image version is removed.
-
-The Deployment manifest file is located at:
-
-~/sbom-deployment.yaml
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -123,6 +94,37 @@ kubectl wait --for=condition=available deployment/sbom \
 echo "[4/4] Verifying scenario state..."
 kubectl get pods -n "$NAMESPACE"
 echo "  Manifest saved at: $MANIFEST_PATH"
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 11"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+There is a Deployment named sbom running in the sbom namespace.
+
+This Deployment contains three containers, and each container uses a different image version.
+
+Your task is to inspect the container images and identify which container includes the package:
+
+libcrypto3 version 3.1.4-r5
+After identifying the correct image version:
+
+Use the pre-installed bom utility to generate an SPDX (Software Bill of Materials) report and save it as:
+
+~/report.spdx
+Update the sbom Deployment so that the container using the identified image version is removed.
+
+The Deployment manifest file is located at:
+
+~/sbom-deployment.yaml
+
+QUESTION
+
 
 echo ""
 echo "✅ Q11 scenario is ready!"
