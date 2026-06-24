@@ -70,6 +70,8 @@ sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 echo "  kubelet restarted."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
