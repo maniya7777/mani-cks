@@ -28,6 +28,8 @@ echo "[2/2] Removing nginx-deployment.yaml..."
 sudo rm -f $HOME/nginx-deployment.yaml
 echo "  Manifest files removed."
 
+clear
+
 echo ""
 echo "✅ Cluster is back to baseline!"
 echo ""
