@@ -1,30 +1,5 @@
 #!/bin/bash
 
-cat <<'QUESTION'
-=============================================================
-              KILLERCODA - QUESTION 09
-=============================================================
-
-context
-A security review found that a workload in the serviceaccount namespace is handling ServiceAccount tokens in a way that does not meet compliance requirements.
-
-You must harden token usage for the existing monitoring components.
-
-🎯 Tasks
-Update the ServiceAccount monitor-sa in the serviceaccount namespace so that Kubernetes does not automatically mount API credentials into Pods using this ServiceAccount.
-
-Update the Deployment monitor (in the same namespace) so that it still receives a ServiceAccount token, but only through an explicitly defined projected volume:
-
-- The projected volume must be named token
-- The token file must be mounted at:
-  /var/run/secrets/kubernetes.io/serviceaccount/token
-- The mount must be read-only
-
-Reference manifest:
-~/monitor/deployment.yaml
-=============================================================
-QUESTION
-
 echo ""
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -114,6 +89,33 @@ kubectl apply -f "$MANIFEST_FILE"
 echo "  Waiting for deployment to be Ready..."
 kubectl wait --for=condition=available deployment/monitor \
     -n "$NAMESPACE" --timeout=120s
+
+clear
+
+cat <<'QUESTION'
+=============================================================
+              KILLERCODA - QUESTION 09
+=============================================================
+
+context
+A security review found that a workload in the serviceaccount namespace is handling ServiceAccount tokens in a way that does not meet compliance requirements.
+
+You must harden token usage for the existing monitoring components.
+
+🎯 Tasks
+Update the ServiceAccount monitor-sa in the serviceaccount namespace so that Kubernetes does not automatically mount API credentials into Pods using this ServiceAccount.
+
+Update the Deployment monitor (in the same namespace) so that it still receives a ServiceAccount token, but only through an explicitly defined projected volume:
+
+- The projected volume must be named token
+- The token file must be mounted at:
+  /var/run/secrets/kubernetes.io/serviceaccount/token
+- The mount must be read-only
+
+Reference manifest:
+~/monitor/deployment.yaml
+=============================================================
+QUESTION
 
 echo ""
 echo "✅ Q09 scenario is ready!"
