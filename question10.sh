@@ -1,29 +1,5 @@
 #!/bin/bash
 
-clear
-
-echo "============================================================="
-echo "              KILLERCODA - QUESTION 10"
-echo "============================================================="
-echo
-
-cat <<'QUESTION'
-
-Context
-A cluster configured with kubeadm was recently upgraded, but one node was retained on an older version due to workload compatibility issues.
-
-Task
-Upgrade the cluster node node02 to match the version of the control plane node.
-
-Use the following command to connect to this compute node:
-
-[candidate@cks000034] ssh node02
-
-PS:
-Do not modify any running workloads in the cluster.
-
-QUESTION
-
 echo
 echo "============================================================="
 echo " Creating Killercoda Environment"
@@ -101,6 +77,31 @@ kubectl get nodes
 
 sleep 5
 kubectl get nodes
+
+
+clear
+
+echo "============================================================="
+echo "              KILLERCODA - QUESTION 10"
+echo "============================================================="
+echo
+
+cat <<'QUESTION'
+
+Context
+A cluster configured with kubeadm was recently upgraded, but one node was retained on an older version due to workload compatibility issues.
+
+Task
+Upgrade the cluster node node02 to match the version of the control plane node.
+
+Use the following command to connect to this compute node:
+
+[candidate@cks000034] ssh node02
+
+PS:
+Do not modify any running workloads in the cluster.
+
+QUESTION
 
 echo ""
 echo "✅ Q10 scenario is ready!"
