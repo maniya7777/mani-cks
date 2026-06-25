@@ -25,7 +25,7 @@ echo "==========================================="
 echo ""
 
 # ── Step 1: Reset only user-modified state ───────────────────
-echo "[1/3] Cleaning up previous Q12 state..."
+echo "[1/3] Cleaning up previous Q05 state..."
 
 # Deployment — user adds securityContext fields to this
 kubectl delete deployment secdep -n "$NAMESPACE" --ignore-not-found
